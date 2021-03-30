@@ -1,20 +1,36 @@
+#!/usr/bin/env python3
+
 import requests 
 import hashlib
 from urllib.parse import urlparse
 from pprint import pprint
 from bs4 import BeautifulSoup as bs
+import time
+
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+
+
+driver = webdriver.PhantomJS()
 
 ### Utils ###
-
 def hashFromString(someString): 
     return hashlib.md5(someString.encode()).hexdigest()
 
 def getSiteName(site):
     return urlparse(site).netloc
 
+
+# get page content, use driver for dinamic content
 def getSiteContent(url): 
-    return requests.get(url).text
-### /Utils ###
+    html = requests.get(url).text
+    if len(html) < 1000:
+        driver.get(url)
+        time.sleep(5)
+        return driver.page_source
+    else:
+        return html
 
 
 def getListOfTags(): 
@@ -43,6 +59,8 @@ def getSiteNavigation(content, sitename):
         'hash': a.get('href'),
     } for a in links if a.get('href') and sitename in a.get('href')]
 
+
+
 # add to the list
 def analyzeContent(sites, tags):
     results = {}
@@ -59,6 +77,9 @@ def analyzeContent(sites, tags):
     
     return results
 
+def saveContent(content, name):
+    print('want to save to file', name);
+
 
 def extractTagsFromPage(content, tags):
     retrived = {}
@@ -74,6 +95,15 @@ def getPageMockContent():
         content = f.read()
         if (content):
             return content;
+
+
+
+
+
+
+
+
+
 def main(): 
     ''' get sites and tags from the lists'''
     tags = getListOfTags()
@@ -92,6 +122,9 @@ def main():
             tagsInContent = extractTagsFromPage(content, tags)
             links = getSiteNavigation(content, target['name'])
             newLinks = [l for l in links if len([el for el in target['links'] if el['hash'] == l['hash']]) == 0]
+            if len(tagsInContent) == 0: 
+                saveContent(content, target['name'])
+                return
             print(idx, target['name'], adr['link'], tagsInContent, len(newLinks), ' new links')
 
         
