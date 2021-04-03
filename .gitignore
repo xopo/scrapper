@@ -2,3 +2,5 @@
 keep
 tests
 *.log
+cache/
+.DS_Store

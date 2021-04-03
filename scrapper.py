@@ -1,138 +1,128 @@
 #!/usr/bin/env python3
-
-import requests 
-import hashlib
-from urllib.parse import urlparse
 from pprint import pprint
-from bs4 import BeautifulSoup as bs
-import time
-
-from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
+import json
 
 
-driver = webdriver.PhantomJS()
+from fileHelpers import isfile, join, getListOfTags, getListOfSites, readContentFromFile, writeCachedContent
+from printerHelper import printSitesTable, printAllTagsTable
+from htmlParser import hashFromString, getMetaData, getSiteName, getSiteContent, getSiteNavigation, extractTagsFromPage
 
-### Utils ###
-def hashFromString(someString): 
-    return hashlib.md5(someString.encode()).hexdigest()
-
-def getSiteName(site):
-    return urlparse(site).netloc
-
-
-# get page content, use driver for dinamic content
-def getSiteContent(url): 
-    html = requests.get(url).text
-    if len(html) < 1000:
-        driver.get(url)
-        time.sleep(5)
-        return driver.page_source
-    else:
-        return html
-
-
-def getListOfTags(): 
-    with open('./tags') as f:
-        content = f.read()
-        if (content):
-            tags = content.split('\n') 
-            return [l.strip() for l in tags] if len(tags) else []
-        
-
-def getListOfSites(): 
-    with open('./sites') as f:
-        content = f.read()
-        if (content):
-            sites = content.split('\n') 
-            return [s.split('-')[0].strip() for s in sites] if len(sites) else []
-
-# get list of links
-def getSiteNavigation(content, sitename):
-    scrapper = bs(content, 'lxml')
-    links = scrapper.find_all('a')
-    return [{
-        'link': a.get('href'), 
-        'rel': a.get('rel'), 
-        'title': a.get('title'),
-        'hash': a.get('href'),
-    } for a in links if a.get('href') and sitename in a.get('href')]
-
-
+# use a salt to cache result. if update is changed data will be gathered anew
+update = 3
 
 # add to the list
 def analyzeContent(sites, tags):
     results = {}
-    for site in sites: 
+    for site in sites['all']: 
         siteContent = getSiteContent(site)
         siteName = getSiteName(site)
         siteHash = hashFromString(site)
         content = {
             'name' : siteName,
-            'links': getSiteNavigation(siteContent, siteName),
-            'hash' : hashFromString(site) 
+            'links': getSiteNavigation(siteContent, siteName)[0],
+            'hash' : hashFromString(site) ,
+            'data' : {}
         }
+        for meta in tags['# meta']:
+            content[meta] = getMetaData(meta, siteContent)
+        
         results[siteHash] = content
     
     return results
-
-def saveContent(content, name):
-    print('want to save to file', name);
-
-
-def extractTagsFromPage(content, tags):
-    retrived = {}
-    scrapper = bs(content, 'lxml')
-    for tag in tags: 
-        target = scrapper.find_all(tag.strip())  # strip tag in case it contains spaces
-        retrived[tag] = len(target)
-
-    return retrived
-
-def getPageMockContent(): 
-    with open('./tests/primaria.html') as f:
-        content = f.read()
-        if (content):
-            return content;
-
-
-
-
-
-
-
 
 
 def main(): 
     ''' get sites and tags from the lists'''
     tags = getListOfTags()
     sites = getListOfSites()
-    ''' create a dictionary '''
-    results = analyzeContent(sites, tags)
-    ''' TODO analize content and extract the tags from content '''
-    for result in results:
-        target = results[result]
-        if (len(target['links']) == 0): 
-            print(target['name'] + ' has no links to parse')
-            break
-        links = target['links'][:10];
-        for idx,adr in enumerate(links):
-            content = getSiteContent(adr['link'])
-            tagsInContent = extractTagsFromPage(content, tags)
-            links = getSiteNavigation(content, target['name'])
-            newLinks = [l for l in links if len([el for el in target['links'] if el['hash'] == l['hash']]) == 0]
-            if len(tagsInContent) == 0: 
-                saveContent(content, target['name'])
-                return
-            print(idx, target['name'], adr['link'], tagsInContent, len(newLinks), ' new links')
+    searchEntity = hashFromString(json.dumps([ tags,  sites,  update]))
+    resultFile = join('./results', searchEntity)
+    print(resultFile)
+    if isfile(resultFile):
+        jsonResult = readContentFromFile(resultFile, False)
+        result = json.loads(jsonResult)
+    else: 
+        results = analyzeContent(sites, tags)
+        ''' TODO analize content and extract the tags from content '''
+        for result in results:
+            target = results[result]
+            analitics = {
+                'title': target['title'],
+                'description': target['description'],
+                'keywords': target['keywords']
+            }
+            if (len(target['links']) == 0): 
+                print(target['name'] + ' has no links to parse')
+                break
+            links = target['links'] # [:10] # take first 10
+            counter = -1 # so we start from 0
+            while counter < 50:
+                counter = counter + 1;        #for idx,adr in enumerate(links):
+                if len(links) <= counter:
+                    counter = 51
+                    break
+                adr = links[counter]
+                content = getSiteContent(adr['link'])
+                tagsInContent = extractTagsFromPage(content, tags['# html'], analitics)
+                [internalLinks, externalLinks] = getSiteNavigation(content, target['name'])
+                newLinks = [l for l in internalLinks if len([el for el in target['links'] if el['hash'] == l['hash']]) == 0]
+                if len(newLinks):
+                    links = links + newLinks
+                print(counter, target['name'], adr['link'], tagsInContent, len(newLinks), ' new links')
+                results[result]['data'][adr['hash']] = {
+                    'link': adr['link'],
+                    'tags': tagsInContent,
+                    'externalLinks': externalLinks
+                }
+        # save it for later change in parse data
+        writeCachedContent(resultFile, json.dumps(results))
 
-        
+    parseResult(result)
 
-    # tagsInContent = extractTagsFromPage(getPageMockContent(), tags)
-    # findMoreLinks = getSiteNavigation(getPageMockContent())
-    ''' TODO create table with results'''
+def countTags(data): 
+    tags = {}
+    for key in data: 
+        for tag in data[key]['tags']:
+            if not tag in tags:
+                tags[tag] = 0
+            try:
+                qty = data[key]['tags'][tag]['count']
+            except:
+                print('some error getting qty', data[key]['tags'][tag])
+                qty = 0 
+            tags[tag] = tags[tag] + qty if tag in tags else qty
+    return tags;
+
+
+
+def parseResult(data):
+    allTags = {}
+    pretyObject = []
+    parsedLinks = []
+    for key in data: 
+        entity = data[key]
+        tags = countTags(entity['data'])
+        parsed = {
+            'name': entity['name'],
+            'links': len(entity['links']),
+            'tags' : tags,
+        }
+        parsedLinks.append(parsed)
+        for tag in tags:
+            qty = tags[tag]
+            allTags[tag] = allTags[tag] + qty if tag in allTags else qty
+
+    # print('by links:\n\n', parsedLinks)
+    linksTable = printSitesTable(parsedLinks)
+    #print('\n\b - all tags:\n', allTags)
+    tagsTable = printAllTagsTable(allTags)
+    #writeResults('results/links', linksTable)
+    writeResults('results/tags', tagsTable)
+
+            
+
 
 
 if __name__=='__main__':
     main()
+    #parseResult(readContentFromFile('./keep/documents/resultobject', False))
