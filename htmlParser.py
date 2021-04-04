@@ -33,16 +33,20 @@ def phantomGetContent(url):
 # get page content, use driver for dinamic content
 def getLiveSiteContent(url): 
     print('\t\t%s' % url)
+    # print('skip get content from - %s' % url)
+    # return ''
+    
     try:
         html = requests.get(url).text
-        if len(html) < 1000:
+        if not html or len(html) < 1000:
             return phantomGetContent(url)
         return html
-    except:
-        print('\n\t######## get by phantom some error occured ######## ')
+    except Exception as er:
+        print(er)
+        print('\n\t######## get by request some error occured ######## ')
         try:
             page = phantomGetContent(url)
-            return '' if len(html) < 1000 else html
+            return '' if not html or len(html) < 1000 else html
         except:
             time.sleep(10)
             print('error getting data for - %s' % url)
@@ -73,12 +77,14 @@ def internalLinksIsValid(link, sitename):
     if len(linkIsAsset) > 0: 
         print('%s - is an asset' % link)
         return False
+    if 'javascript:' in link or 'mailto' in link or 'tel:' in link:
+        return False
     return  (sitename in link or link[:3] != 'htt')
 
 def fixRelativeLink(link, sitename):
     if link[0:3] == 'htt':
         return link
-    return urljoin('https://', sitename, link);
+    return urljoin('https://%s'% sitename, link);
 
 '''
     get list of links
@@ -95,7 +101,7 @@ def getSiteNavigation(content, sitename):
         'hash': hashFromString(a.get('href')),
     } for a in links if  internalLinksIsValid(a.get('href'), sitename)]
   
-    externalLinks = [a.get('href') for a  in links if a.get('href') and 'http' in a.get('href') and not sitename in a.get('href')]
+    externalLinks = [a.get('href') for a  in set(links) if a.get('href') and 'http' in a.get('href') and not sitename in a.get('href')]
     return [internalLinks, externalLinks]
 
 '''clean word by removing extra punctuation and change to lowercase'''
@@ -127,7 +133,7 @@ def findMetaInTags(elements, analitics):
                     result['all'] = result['all'] + targetFound
                     result[key]['all'] = result[key]['all'] + targetFound
                     result[key][target] = targetFound
-                print(target, result)
+                # print(target, result)
     return result
 
 def extractTagsFromPage(content, tags, analitics):
@@ -150,6 +156,6 @@ def getMetaData(meta, content):
     targets = scrapper.find_all('meta')
     for target in targets:
         if target.has_attr('name') and target['name'] == meta:
-            print(meta, target['content'])
+            #print(meta, target['content'])
             return target['content'] if target.has_attr('content') else '' 
     

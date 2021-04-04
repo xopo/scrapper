@@ -1,6 +1,6 @@
-# test
-https://www.farmec.ro - farmec cluj
-@stop
+~# test
+~https://www.restaurantshanghai.ro/ - universitatea tehnica
+~@stop
 
 # institutii
 https://primariaclujnapoca.ro - primaria cluj
@@ -10,10 +10,14 @@ https://cj.prefectura.mai.gov.ro - prefectura cluj
 https://fspac.ubbcluj.ro/ro - fspac
 https://www.ubbcluj.ro/ro/ - ubbcluj
 https://www.utcluj.ro - universitatea tehnica
+~http://www.eminescucj.ro 
+https://www.avramiancucluj.ro
+https://www.liceul-onisifor-ghibu.ro
 
 # beauty
 https://www.farmec.ro - farmec cluj
 https://jolidon.com - jolidon cluj
+
 
 # alimentare
 https://napolact.ro - napolact cluj
@@ -21,13 +25,11 @@ https://clujanacluj.com - clujana cluj
 https://it.aiaic.ro/?set_lang=en  - aeroportul international avram iancu cluj
 https://sanex.ro/ - sanex cluj
 
-# imobiliare
-https://junior-residence.ro
-https://profix.com.ro
-https://remax.ro
 
 # auto
 https://toniauto.ro
+https://www.auto-start.ro/
+https://www.silaghiauto.ro/
 
 # stiri
 https://jurnaldecluj.ro
@@ -35,3 +37,13 @@ https://www.ziardecluj.ro/taguri/stiri
 https://gazetadecluj.ro
 https://www.monitorulcj.ro
 https://www.zcj.ro
+
+
+# imobiliare
+https://junior-residence.ro
+https://remax.ro
+
+# restaorante
+https://www.tokyorestaurant.ro
+https://indigorestaurant.ro/
+https://www.restaurantshanghai.ro/
