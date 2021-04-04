@@ -8,7 +8,7 @@ from printerHelper import printSitesTable, printAllTagsTable
 from htmlParser import hashFromString, getMetaData, getSiteName, getSiteContent, getSiteNavigation, extractTagsFromPage
 
 # use a salt to cache result. if update is changed data will be gathered anew
-update = 3
+update = 2
 
 # add to the list
 def analyzeContent(sites, tags):

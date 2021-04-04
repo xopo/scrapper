@@ -1,4 +1,5 @@
 import requests 
+from urllib.parse import urljoin
 import hashlib
 from urllib.parse import urlparse
 from os.path import join
@@ -12,8 +13,6 @@ import re
 import time
 from fileHelpers import readContentFromFile, writeCachedContent
 
-driver = None
-
 def getDriver():
     return webdriver.PhantomJS()
 
@@ -25,8 +24,7 @@ def getSiteName(site):
     return urlparse(site).netloc
 
 def phantomGetContent(url):
-    if not driver:
-        driver = getDriver()
+    driver = getDriver()
 
     driver.get(url)
     time.sleep(5)
@@ -34,15 +32,17 @@ def phantomGetContent(url):
 
 # get page content, use driver for dinamic content
 def getLiveSiteContent(url): 
+    print('\t\t%s' % url)
     try:
         html = requests.get(url).text
         if len(html) < 1000:
             return phantomGetContent(url)
         return html
     except:
-        print(er)
+        print('\n\t######## get by phantom some error occured ######## ')
         try:
-            return phantomGetContent(url)
+            page = phantomGetContent(url)
+            return '' if len(html) < 1000 else html
         except:
             time.sleep(10)
             print('error getting data for - %s' % url)
@@ -65,6 +65,20 @@ def getSiteContent(url):
         writeCachedContent(cachedContent, content)
         return content
     
+def internalLinksIsValid(link, sitename):
+    if not link or not len(link) or link[0] == '#': 
+        return False
+    assets = ['css', 'js', 'jpg', 'mov', 'pdf', 'png', 'ico']
+    linkIsAsset = [aset for aset in assets if aset in link[-3:] ]
+    if len(linkIsAsset) > 0: 
+        print('%s - is an asset' % link)
+        return False
+    return  (sitename in link or link[:3] != 'htt')
+
+def fixRelativeLink(link, sitename):
+    if link[0:3] == 'htt':
+        return link
+    return urljoin('https://', sitename, link);
 
 '''
     get list of links
@@ -75,11 +89,12 @@ def getSiteNavigation(content, sitename):
     scrapper = bs(content, 'lxml')
     links = scrapper.find_all('a')
     internalLinks = [{
-        'link': a.get('href'), 
+        'link': fixRelativeLink(a.get('href'), sitename), 
         'rel': a.get('rel'), 
         'title': a.get('title'),
         'hash': hashFromString(a.get('href')),
-    } for a in links if a.get('href') and sitename in a.get('href')]
+    } for a in links if  internalLinksIsValid(a.get('href'), sitename)]
+  
     externalLinks = [a.get('href') for a  in links if a.get('href') and 'http' in a.get('href') and not sitename in a.get('href')]
     return [internalLinks, externalLinks]
 
@@ -98,7 +113,6 @@ def findMetaInTags(elements, analitics):
         if len(content) == 0: continue
         content = content.lower().strip().split(' ')
         for key in analitics:
-            print('--key', key)
             if not key in result:
                 result[key] = {"all": 0}
             targets = analitics[key]
@@ -114,7 +128,6 @@ def findMetaInTags(elements, analitics):
                     result[key]['all'] = result[key]['all'] + targetFound
                     result[key][target] = targetFound
                 print(target, result)
-    print(result)
     return result
 
 def extractTagsFromPage(content, tags, analitics):
