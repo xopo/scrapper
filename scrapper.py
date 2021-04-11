@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 from pprint import pprint
 import json
-
+import sys
 
 from fileHelpers import isfile, join, getListOfTags, getListOfSites, readContentFromFile, writeCachedContent
-from printerHelper import printSitesTable, printAllTagsTable
+from printerHelper import printSitesTagsTable, printAllTagsTable, sitesMetaTables
 from htmlParser import hashFromString, getMetaData, getSiteName, getSiteContent, getSiteNavigation, extractTagsFromPage
 
 # use a salt to cache result. if update is changed data will be gathered anew
-update = 2
+update = 7
+# number of pages to analize per site 0 initial 20
+max_pages = 19
 
 # add to the list
 def analyzeContent(sites, tags):
@@ -23,7 +25,8 @@ def analyzeContent(sites, tags):
             'name' : siteName,
             'links': getSiteNavigation(siteContent, siteName)[0],
             'hash' : hashFromString(site) ,
-            'data' : {}
+            'data' : {}, 
+            'domain': [domain for domain in sites if domain != 'all' and site in sites[domain]][0]
         }
         for meta in tags['# meta']:
             content[meta] = getMetaData(meta, siteContent)
@@ -46,7 +49,9 @@ def main():
     ''' get sites and tags from the lists'''
     tags = getListOfTags()
     sites = getListOfSites()
-    searchEntity = hashFromString(json.dumps([ tags,  sites,  update]))
+    # results should be cached based on the content of tags, sistes, update, max_pages
+    # so that any change in one of this will trigger a new analisys
+    searchEntity = hashFromString(json.dumps([ tags,  sites,  update, max_pages]))
     resultFile = join('./results', searchEntity)
     print(resultFile)
     if isfile(resultFile):
@@ -67,7 +72,7 @@ def main():
                 break
             links = uniqueLinks(target['links']) # [:10] # take first 10
             counter = -1 # so we start from 0
-            while counter < 20:
+            while counter < max_pages:
                 counter = counter + 1;        #for idx,adr in enumerate(links):
                 print('\n\t\t%s %s' % (counter, target['name']))
                 if len(links) <= counter:
@@ -113,8 +118,9 @@ def countTags(data):
                 qty = 0 
             try:
                 metaScore = data[key]['tags'][tag]['metaScore']
-                meta = metaScore['all'] if 'all' in metaScore else metaScore
-            except:
+                meta = metaScore if isinstance(metaScore, int)  else metaScore['all']
+            except Exception as e:
+                print(e)
                 print('some error getting meta', data[key]['tags'][tag])
                 meta = 0
             tags[tag]['count'] = tags[tag]['count'] + qty if tag in tags else qty
@@ -142,9 +148,13 @@ def parseResult(data):
 
         parsed = {
             'name': entity['name'],
+            'domain': entity['domain'].split('#')[1].strip(),
             'links': len(entity['links']),
             'externalLinks': externalLinks,
             'tags' : tags,
+            'title': entity['title'],
+            'description': entity['description'],
+            'keywords': entity['keywords']
         }
         parsedLinks.append(parsed)
         for tag in tags:
@@ -152,16 +162,25 @@ def parseResult(data):
             allTags[tag] = allTags[tag] + qty if tag in allTags else qty
 
     # print('by links:\n\n', parsedLinks)
-    linksTable = printSitesTable(parsedLinks)
+    linksTable = printSitesTagsTable(parsedLinks)
+    [sitesMeta, socialMedia] = sitesMetaTables(parsedLinks)
     #print('\n\b - all tags:\n', allTags)
     tagsTable = printAllTagsTable(allTags)
     #writeResults('results/links', linksTable)
-    writeCachedContent('results/tags', tagsTable)
-    writeCachedContent('results/parsedLinks', linksTable)
+
+    printable = '\n\n'.join([tagsTable, linksTable, sitesMeta, socialMedia])
+    writeCachedContent('results/printableResult%i'%(max_pages+1) , printable)
+  
             
 
 
 
 if __name__=='__main__':
+    for p in sys.argv:
+        if 'pages' in p:
+            total = int(p.split('pages=')[1])
+            if total and total > 0:
+                max_pages = total - 1
+    print('\n\t\tCheck pages from |sites| file and get the result from %i pages\n\n' % max_pages)
     main()
     #parseResult(readContentFromFile('./keep/documents/resultobject', False))

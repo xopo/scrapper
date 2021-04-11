@@ -45,7 +45,7 @@ def getLiveSiteContent(url):
         print(er)
         print('\n\t######## get by request some error occured ######## ')
         try:
-            page = phantomGetContent(url)
+            html = phantomGetContent(url)
             return '' if not html or len(html) < 1000 else html
         except:
             time.sleep(10)
@@ -58,11 +58,10 @@ def getLiveSiteContent(url):
 '''
 def getSiteContent(url):
     siteHash = hashFromString(url)
-    # check contentFileExists
     cachedContent = join('cache', siteHash)
 
     content = readContentFromFile(cachedContent, False)
-    if content and len(content) > 5000:
+    if content and len(content) > 1500:
         return content
     content = getLiveSiteContent(url)
     if content and len(content):
@@ -155,7 +154,6 @@ def getMetaData(meta, content):
         return scrapper.find(meta).text
     targets = scrapper.find_all('meta')
     for target in targets:
-        if target.has_attr('name') and target['name'] == meta:
-            #print(meta, target['content'])
+        if target.has_attr('name') and (target['name'] == meta or target['name'] == 'og:%s' % meta):
             return target['content'] if target.has_attr('content') else '' 
     
