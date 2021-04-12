@@ -8,9 +8,9 @@ from printerHelper import printSitesTagsTable, printAllTagsTable, sitesMetaTable
 from htmlParser import hashFromString, getMetaData, getSiteName, getSiteContent, getSiteNavigation, extractTagsFromPage
 
 # use a salt to cache result. if update is changed data will be gathered anew
-update = 7
+update = 10
 # number of pages to analize per site 0 initial 20
-max_pages = 19
+max_pages = 0
 
 # add to the list
 def analyzeContent(sites, tags):
@@ -87,7 +87,7 @@ def main():
                     [internalLinks, externalLinks] = getSiteNavigation(content, target['name'])
                     newLinks = [l for l in internalLinks if len([el for el in target['links'] if el['hash'] == l['hash']]) == 0]
                     if len(newLinks):
-                        links = links + newLinks
+                        results[result]['links'] = results[result]['links'] + newLinks
                     print(counter, target['name'], adr['link'], tagsInContent, len(newLinks), ' new links')
                     results[result]['data'][adr['hash']] = {
                         'link': adr['link'],
@@ -162,13 +162,13 @@ def parseResult(data):
             allTags[tag] = allTags[tag] + qty if tag in allTags else qty
 
     # print('by links:\n\n', parsedLinks)
-    linksTable = printSitesTagsTable(parsedLinks)
     [sitesMeta, socialMedia] = sitesMetaTables(parsedLinks)
     #print('\n\b - all tags:\n', allTags)
-    tagsTable = printAllTagsTable(allTags)
+    linksTable = printSitesTagsTable(parsedLinks)
+    allTagsTable = printAllTagsTable(allTags)
     #writeResults('results/links', linksTable)
 
-    printable = '\n\n'.join([tagsTable, linksTable, sitesMeta, socialMedia])
+    printable = '\n\n'.join([sitesMeta, allTagsTable, linksTable, socialMedia])
     writeCachedContent('results/printableResult%i'%(max_pages+1) , printable)
   
             

@@ -140,6 +140,8 @@ def extractTagsFromPage(content, tags, analitics):
     scrapper = bs(content, 'lxml')
     for tag in tags: 
         target = scrapper.find_all(tag.strip())  # strip tag in case it contains spaces
+        # get only tags that contain text
+        target = [t for t in target if len(t.text.strip()) > 0]
         retrived[tag] = {
             'count': len(target),
             'metaScore': findMetaInTags(target, analitics)

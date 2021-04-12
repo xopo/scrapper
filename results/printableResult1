@@ -1,109 +1,118 @@
-+---------+-------+--------+--------+------+-----+---------+----+-----+
-| article | aside | footer | header | main | nav | section | h1 |  h2 |
-+---------+-------+--------+--------+------+-----+---------+----+-----+
-|    44   |   46  |   44   |   94   |  9   |  69 |   213   | 48 | 254 |
-+---------+-------+--------+--------+------+-----+---------+----+-----+
-
-+----+------------------------------+-----------+-----------+-----------+------------+------------+------------+------------+-----------+------------+
-| no |          Site Name           |  article  |   aside   |   footer  |   header   |    main    |    nav     |  section   |     h1    |     h2     |
-+----+------------------------------+-----------+-----------+-----------+------------+------------+------------+------------+-----------+------------+
-| 1  |    primariaclujnapoca.ro     | c:3 - m:8 |           | c:2 - m:4 | c:1 - m:3  | c:1 - m:19 | c:5 - m:3  | c:7 - m:19 | c:1 - m:1 |            |
-| 2  |   cj.prefectura.mai.gov.ro   |           | c:3 - m:1 |           |            |            |            |            |           |            |
-| 3  |       fspac.ubbcluj.ro       |           |           | c:1 - m:2 |            |            |            |            |           |            |
-| 4  |        www.ubbcluj.ro        |           |           | c:1 - m:1 |            |            | c:1 - m:2  |            |           | c:31 - m:1 |
-| 5  |        www.utcluj.ro         |           |           | c:1 - m:2 | c:1 - m:1  |            |            |            |           |            |
-| 6  |    www.avramiancucluj.ro     |           |           | c:1 - m:5 |            |            |            |            |           |            |
-| 7  | www.liceul-onisifor-ghibu.ro |           |           |           |            |            |            |            | c:1 - m:5 |            |
-| 8  |      creseclujnapoca.ro      |           |           |           |            |            |            |            |           |            |
-| 9  |       centrulheidi.ro        | c:1 - m:5 |           |           |            | c:1 - m:5  |            |            |           |            |
-| 10 |   www.gradinitapatricia.ro   |           |           |           | c:1 - m:1  |            | c:2 - m:1  |            |           |            |
-| 11 |       spitalclujana.ro       |           |           |           |            |            |            |            |           |            |
-| 12 |      www.reginamaria.ro      | c:1 - m:2 |           | c:1 - m:2 |            | c:1 - m:2  |            |            |           |            |
-| 13 |        www.artis3.ro         |           |           |           |            |            | c:1 - m:8  |            | c:1 - m:1 | c:4 - m:2  |
-| 14 |     www.laurusmedical.ro     |           |           |           |            |            | c:2 - m:3  |            |           |            |
-| 15 |       www.elmafarm.ro        |           |           | c:1 - m:2 |            |            | c:1 - m:27 |            | c:1 - m:3 | c:9 - m:1  |
-| 16 |        www.catena.ro         |           |           |           |            |            |            |            |           |            |
-| 17 |    www.farmaciiledona.ro     |           |           |           |            |            |            | c:3 - m:1  |           |            |
-| 18 |     www.remediumfarm.ro      |           |           | c:2 - m:2 | c:2 - m:2  |            |            |            |           |            |
-| 19 |        www.plafar.com        |           | c:1 - m:1 |           | c:1 - m:1  |            |            |            |           |            |
-| 20 |        www.farmec.ro         |           |           | c:1 - m:1 | c:1 - m:1  |            |            | c:1 - m:2  | c:1 - m:1 |            |
-| 21 |         jolidon.com          |           |           |           | c:6 - m:2  |            | c:2 - m:2  | c:1 - m:1  |           |            |
-| 22 |         napolact.ro          |           |           |           |            |            |            |            |           |            |
-| 23 |         it.aiaic.ro          |           |           | c:1 - m:1 |            |            |            |            |           |            |
-| 24 |           sanex.ro           |           |           |           |            |            |            |            |           |            |
-| 25 |       clujanacluj.com        |           |           |           |            |            |            |            | c:1 - m:1 |            |
-| 26 |         toniauto.ro          | c:2 - m:1 |           |           |            |            |            | c:1 - m:2  |           |            |
-| 27 |      www.auto-start.ro       |           |           |           |            |            |            |            |           |            |
-| 28 |      www.silaghiauto.ro      |           |           |           |            |            |            |            |           | c:2 - m:3  |
-| 29 |       jurnaldecluj.ro        |           |           |           | c:22 - m:3 |            |            |            |           | c:22 - m:2 |
-| 30 |      www.ziardecluj.ro       |           |           |           |            |            |            |            |           |            |
-| 31 |       gazetadecluj.ro        |           |           |           |            |            |            |            |           |            |
-| 32 |      www.monitorulcj.ro      |           | c:2 - m:1 |           |            |            |            |            |           | c:10 - m:1 |
-| 33 |          www.zcj.ro          |           |           |           |            |            |            |            |           |            |
-| 34 |     junior-residence.ro      |           |           | c:1 - m:2 |            |            |            |            |           | c:4 - m:4  |
-| 35 |           remax.ro           |           |           |           |            |            | c:2 - m:19 |            | c:1 - m:1 |            |
-| 36 |    www.tokyorestaurant.ro    | c:1 - m:1 | c:1 - m:1 | c:1 - m:3 |            |            |            |            |           |            |
-| 37 |     indigorestaurant.ro      |           |           |           |            |            |            | c:12 - m:1 |           |            |
-| 38 |  www.restaurantshanghai.ro   |           |           |           |            |            |            |            |           |            |
-| 39 |     martyrestaurants.ro      |           |           | c:1 - m:2 |            | c:1 - m:10 |            | c:1 - m:10 |           |            |
-| 40 | complexsportivgheorgheni.ro  |           |           |           |            |            |            | c:8 - m:7  |           | c:3 - m:1  |
-| 41 |       www.decathlon.ro       |           |           |           |            |            | c:1 - m:1  |            |           |            |
-| 42 |       clujbusiness.ro        |           |           |           |            |            |            |            |           |            |
-| 43 |          softech.ro          | c:4 - m:1 |           |           | c:1 - m:2  | c:1 - m:19 | c:2 - m:2  | c:5 - m:19 |           |            |
-| 44 |        www.arobs.com         |           |           | c:1 - m:5 | c:1 - m:1  |            | c:4 - m:1  | c:85 - m:9 | c:1 - m:6 |            |
-| 45 |        www.brinel.com        | c:3 - m:1 |           |           | c:3 - m:2  |            |            |            |           |            |
-+----+------------------------------+-----------+-----------+-----------+------------+------------+------------+------------+-----------+------------+
-
 +----+------------------------------+----------------+----------------+-----------------+----------+----------+---------+-----------+---------+
-| no |             Name             | External Links | Internal Links |      Domain     | facebook | linkedin | youtube | instagram | twitter |
+| no |             Name             | Internal Links | External Links |      Domain     | facebook | linkedin | youtube | instagram | twitter |
 +----+------------------------------+----------------+----------------+-----------------+----------+----------+---------+-----------+---------+
 | 1  |    primariaclujnapoca.ro     |      269       |       26       |    institutii   | facebook |          | youtube |           |         |
 | 2  |   cj.prefectura.mai.gov.ro   |       42       |       24       |    institutii   | facebook |          | youtube |           |         |
-| 3  |       fspac.ubbcluj.ro       |       89       |       9        |    invatamant   | facebook |          | youtube | instagram |         |
-| 4  |        www.ubbcluj.ro        |      128       |       46       |    invatamant   | facebook | linkedin | youtube |           | twitter |
-| 5  |        www.utcluj.ro         |       45       |       51       |    invatamant   | facebook |          |         | instagram | twitter |
-| 6  |    www.avramiancucluj.ro     |       95       |       0        |    invatamant   |          |          |         |           |         |
+| 3  |       fspac.ubbcluj.ro       |       95       |       9        |    invatamant   | facebook |          | youtube | instagram |         |
+| 4  |        www.ubbcluj.ro        |      153       |       46       |    invatamant   | facebook | linkedin | youtube |           | twitter |
+| 5  |        www.utcluj.ro         |       56       |       51       |    invatamant   | facebook |          |         | instagram | twitter |
+| 6  |    www.avramiancucluj.ro     |       97       |       0        |    invatamant   |          |          |         |           |         |
 | 7  | www.liceul-onisifor-ghibu.ro |      107       |       4        |    invatamant   |          |          |         |           |         |
 | 8  |      creseclujnapoca.ro      |       39       |       1        | creseclujnapoca |          |          |         |           |         |
 | 9  |       centrulheidi.ro        |       75       |       3        | creseclujnapoca |          |          |         |           |         |
 | 10 |   www.gradinitapatricia.ro   |       24       |       1        | creseclujnapoca | facebook |          |         |           |         |
-| 11 |       spitalclujana.ro       |      134       |       1        |      spital     |          |          |         |           |         |
-| 12 |      www.reginamaria.ro      |      118       |       13       |      spital     | facebook | linkedin | youtube | instagram |         |
+| 11 |       spitalclujana.ro       |      145       |       1        |      spital     |          |          |         |           |         |
+| 12 |      www.reginamaria.ro      |      119       |       13       |      spital     | facebook | linkedin | youtube | instagram |         |
 | 13 |        www.artis3.ro         |       88       |       3        |      spital     | facebook |          |         | instagram |         |
-| 14 |     www.laurusmedical.ro     |      209       |       6        |      spital     | facebook |          | youtube |           | twitter |
+| 14 |     www.laurusmedical.ro     |      222       |       6        |      spital     | facebook |          | youtube |           | twitter |
 | 15 |       www.elmafarm.ro        |      607       |       6        |     farmacii    | facebook |          |         | instagram |         |
-| 16 |        www.catena.ro         |      237       |       16       |     farmacii    | facebook |          | youtube | instagram |         |
+| 16 |        www.catena.ro         |      240       |       16       |     farmacii    | facebook |          | youtube | instagram |         |
 | 17 |    www.farmaciiledona.ro     |       39       |      302       |     farmacii    | facebook | linkedin | youtube | instagram |         |
 | 18 |     www.remediumfarm.ro      |      489       |       9        |     farmacii    | facebook |          |         | instagram |         |
 | 19 |        www.plafar.com        |       35       |       0        |     farmacii    |          |          |         |           |         |
-| 20 |        www.farmec.ro         |      228       |       5        |      beauty     | facebook |          | youtube | instagram | twitter |
-| 21 |         jolidon.com          |       46       |       3        |      beauty     |          |          |         |           |         |
+| 20 |        www.farmec.ro         |      234       |       5        |      beauty     | facebook |          | youtube | instagram | twitter |
+| 21 |         jolidon.com          |       83       |       3        |      beauty     |          |          |         |           |         |
 | 22 |         napolact.ro          |       22       |       6        |    alimentare   | facebook |          | youtube |           |         |
-| 23 |         it.aiaic.ro          |      102       |       17       |    aeroportul   | facebook | linkedin | youtube | instagram | twitter |
-| 24 |           sanex.ro           |       10       |       8        |    industrie    | facebook |          |         |           |         |
-| 25 |       clujanacluj.com        |       26       |       2        |    industrie    | facebook |          |         |           |         |
-| 26 |         toniauto.ro          |       7        |       0        |       auto      |          |          |         |           |         |
-| 27 |      www.auto-start.ro       |       23       |       2        |       auto      | facebook |          |         |           |         |
-| 28 |      www.silaghiauto.ro      |       13       |       0        |       auto      |          |          |         |           |         |
-| 29 |       jurnaldecluj.ro        |      245       |       10       |      stiri      | facebook | linkedin | youtube | instagram | twitter |
-| 30 |      www.ziardecluj.ro       |      136       |       2        |      stiri      |          |          |         |           |         |
-| 31 |       gazetadecluj.ro        |       97       |       8        |      stiri      | facebook |          | youtube |           | twitter |
-| 32 |      www.monitorulcj.ro      |       79       |       8        |      stiri      | facebook |          |         |           | twitter |
-| 33 |          www.zcj.ro          |      221       |       50       |      stiri      | facebook | linkedin | youtube | instagram | twitter |
-| 34 |     junior-residence.ro      |       31       |       2        |    imobiliare   |          |          |         |           |         |
-| 35 |           remax.ro           |      811       |       6        |    imobiliare   |          | linkedin | youtube |           | twitter |
-| 36 |    www.tokyorestaurant.ro    |       4        |       15       |   restaurante   | facebook |          |         | instagram |         |
-| 37 |     indigorestaurant.ro      |       40       |       4        |   restaurante   | facebook |          |         | instagram |         |
-| 38 |  www.restaurantshanghai.ro   |       39       |       11       |   restaurante   | facebook |          | youtube | instagram | twitter |
-| 39 |     martyrestaurants.ro      |       27       |       13       |   restaurante   | facebook |          |         | instagram |         |
-| 40 | complexsportivgheorgheni.ro  |       31       |       2        |      sport      |          |          |         |           |         |
-| 41 |       www.decathlon.ro       |      267       |       63       |      sport      | facebook | linkedin | youtube | instagram |         |
-| 42 |       clujbusiness.ro        |       60       |       23       |     business    | facebook |          |         |           | twitter |
-| 43 |          softech.ro          |       47       |       4        |        IT       | facebook | linkedin |         |           | twitter |
-| 44 |        www.arobs.com         |      136       |       37       |        IT       | facebook | linkedin | youtube | instagram | twitter |
-| 45 |        www.brinel.com        |       39       |       2        |        IT       |          |          |         |           |         |
-|    |                              |                |                |                 |    31    |    18    |    18   |     10    |    14   |
+| 23 |           bonas.ro           |      131       |       15       |    alimentare   | facebook | linkedin | youtube | instagram |         |
+| 24 |          comlact.ro          |       27       |       2        |    alimentare   |          |          |         |           |         |
+| 25 |       www.lacolline.ro       |       61       |       2        |    alimentare   | facebook |          |         |           |         |
+| 26 |         narcheese.ro         |       63       |       6        |    alimentare   | facebook |          |         | instagram |         |
+| 27 |         it.aiaic.ro          |      104       |       17       |    aeroportul   | facebook | linkedin | youtube | instagram | twitter |
+| 28 |           sanex.ro           |       10       |       8        |    industrie    | facebook |          |         |           |         |
+| 29 |       clujanacluj.com        |      254       |       2        |    industrie    | facebook |          |         |           |         |
+| 30 |         toniauto.ro          |       7        |       0        |       auto      |          |          |         |           |         |
+| 31 |      www.auto-start.ro       |       23       |       2        |       auto      | facebook |          |         |           |         |
+| 32 |      www.silaghiauto.ro      |       13       |       0        |       auto      |          |          |         |           |         |
+| 33 |       jurnaldecluj.ro        |      320       |       10       |      stiri      | facebook | linkedin | youtube | instagram | twitter |
+| 34 |      www.ziardecluj.ro       |      303       |       2        |      stiri      |          |          |         |           |         |
+| 35 |       gazetadecluj.ro        |      181       |       8        |      stiri      | facebook |          | youtube |           | twitter |
+| 36 |      www.monitorulcj.ro      |      113       |       8        |      stiri      | facebook |          |         |           | twitter |
+| 37 |          www.zcj.ro          |      323       |       50       |      stiri      | facebook | linkedin | youtube | instagram | twitter |
+| 38 |     junior-residence.ro      |       31       |       2        |    imobiliare   |          |          |         |           |         |
+| 39 |           remax.ro           |      814       |       6        |    imobiliare   |          | linkedin | youtube |           | twitter |
+| 40 |    www.tokyorestaurant.ro    |       5        |       15       |   restaurante   | facebook |          |         | instagram |         |
+| 41 |     indigorestaurant.ro      |       40       |       4        |   restaurante   | facebook |          |         | instagram |         |
+| 42 |  www.restaurantshanghai.ro   |       39       |       11       |   restaurante   | facebook |          | youtube | instagram | twitter |
+| 43 |     martyrestaurants.ro      |       27       |       13       |   restaurante   | facebook |          |         | instagram |         |
+| 44 | complexsportivgheorgheni.ro  |       31       |       2        |      sport      |          |          |         |           |         |
+| 45 |       www.decathlon.ro       |      272       |       63       |      sport      | facebook | linkedin | youtube | instagram |         |
+| 46 |       clujbusiness.ro        |       60       |       23       |     business    | facebook |          |         |           | twitter |
+| 47 |          softech.ro          |       47       |       4        |        IT       | facebook | linkedin |         |           | twitter |
+| 48 |        www.arobs.com         |      136       |       37       |        IT       | facebook | linkedin | youtube | instagram | twitter |
+| 49 |        www.brinel.com        |       39       |       2        |        IT       |          |          |         |           |         |
+|    |                              |                |                |                 |    34    |    11    |    19   |     20    |    14   |
 +----+------------------------------+----------------+----------------+-----------------+----------+----------+---------+-----------+---------+
+
++---------+-------+--------+--------+------+-----+---------+----+-----+-----+-----+----+----+
+| article | aside | footer | header | main | nav | section | h1 |  h2 |  h3 |  h4 | h5 | h6 |
++---------+-------+--------+--------+------+-----+---------+----+-----+-----+-----+----+----+
+|    45   |   32  |   48   |   94   |  11  |  69 |   189   | 48 | 283 | 496 | 132 | 78 | 75 |
++---------+-------+--------+--------+------+-----+---------+----+-----+-----+-----+----+----+
+
++----+------------------------------+----------+----------+----------+-----------+-----------+-----------+-----------+----------+-----------+-----------+-----------+----------+----------+
+| no |          Site Name           | article  |  aside   |  footer  |   header  |    main   |    nav    |  section  |    h1    |     h2    |     h3    |     h4    |    h5    |    h6    |
++----+------------------------------+----------+----------+----------+-----------+-----------+-----------+-----------+----------+-----------+-----------+-----------+----------+----------+
+| 1  |    primariaclujnapoca.ro     | c:3- m:8 |          | c:2- m:4 |  c:1- m:3 | c:1- m:19 |  c:3- m:3 | c:6- m:19 | c:1- m:1 |    c:29   |           |    c:4    |          | c:1- m:2 |
+| 2  |   cj.prefectura.mai.gov.ro   |   c:1    | c:3- m:1 |   c:1    |    c:5    |           |    c:2    |           |   c:1    |    c:1    |           |    c:1    |          |          |
+| 3  |       fspac.ubbcluj.ro       |          |          | c:1- m:2 |    c:1    |           |    c:4    |  c:1- m:3 |   c:2    |           |    c:1    |           |          |          |
+| 4  |        www.ubbcluj.ro        |   c:1    |          | c:1- m:1 |    c:1    |           |  c:1- m:2 |           |   c:1    | c:31- m:1 |           |           |          |          |
+| 5  |        www.utcluj.ro         |          |          | c:1- m:2 |  c:1- m:1 |           |           |           |          |    c:9    |           |    c:3    |   c:10   |   c:1    |
+| 6  |    www.avramiancucluj.ro     |   c:1    |          | c:1- m:5 |    c:1    |           |    c:1    |           |   c:1    |           |    c:4    |    c:1    |          |          |
+| 7  | www.liceul-onisifor-ghibu.ro |          |          |          |           |           |           |           | c:1- m:5 |           |    c:1    |           |   c:2    |          |
+| 8  |      creseclujnapoca.ro      |          |          |          |           |           |           |           |          |    c:1    |           |           |          |          |
+| 9  |       centrulheidi.ro        | c:1- m:5 |          |          |    c:1    |  c:1- m:5 |    c:1    |           |          |    c:6    |           |           |          |          |
+| 10 |   www.gradinitapatricia.ro   |          |          |   c:1    |  c:1- m:1 |           |  c:2- m:1 |    c:2    |          |           |    c:2    |           |          |          |
+| 11 |       spitalclujana.ro       |          |          |   c:1    |    c:1    |    c:1    |           |           |          |           |           |           |          |          |
+| 12 |      www.reginamaria.ro      | c:1- m:2 |   c:1    | c:1- m:2 |    c:1    |  c:1- m:2 |    c:6    |    c:9    |   c:1    |    c:5    |           |    c:1    |   c:3    |          |
+| 13 |        www.artis3.ro         |          |          |   c:1    |           |           |  c:1- m:8 |           | c:1- m:1 |  c:4- m:2 |           |           |          |          |
+| 14 |     www.laurusmedical.ro     |          |          |   c:2    |  c:1- m:3 |           |  c:2- m:3 |    c:1    |          |    c:3    | c:52- m:1 | c:12- m:1 |          |          |
+| 15 |       www.elmafarm.ro        |          |          | c:1- m:2 |           |           | c:1- m:27 |           | c:1- m:3 |  c:9- m:1 |    c:1    |    c:1    |          |          |
+| 16 |        www.catena.ro         |          |          |          |           |           |           |           |   c:1    |  c:4- m:1 |           |           |          |          |
+| 17 |    www.farmaciiledona.ro     |          |          |   c:1    |    c:1    |    c:1    |    c:2    |  c:3- m:1 |          |           |           |    c:2    |   c:4    |          |
+| 18 |     www.remediumfarm.ro      |          |          | c:2- m:2 |  c:2- m:2 |    c:1    |    c:1    |    c:4    |          |    c:8    |   c:105   |           |          |          |
+| 19 |        www.plafar.com        |          | c:1- m:1 |   c:1    |  c:1- m:1 |           |           |           |          |           |           |           |          |          |
+| 20 |        www.farmec.ro         |          |          | c:1- m:1 |  c:1- m:1 |           |    c:2    |  c:1- m:2 | c:1- m:1 |    c:3    |           |           |          |          |
+| 21 |         jolidon.com          |          |          |   c:4    |  c:6- m:2 |           |  c:2- m:2 |  c:1- m:1 |   c:1    |           |    c:5    | c:11- m:1 | c:1- m:1 |          |
+| 22 |         napolact.ro          |          |          |   c:1    |    c:1    |           |    c:1    |           |          |           |           |           |          |          |
+| 23 |           bonas.ro           |          |          |   c:1    |    c:1    |           |    c:2    | c:13- m:2 |          |  c:7- m:1 |    c:4    |    c:5    |   c:1    |          |
+| 24 |          comlact.ro          | c:1- m:2 | c:1- m:1 | c:1- m:1 |    c:1    |           |           |           |          |    c:5    |    c:4    |    c:8    | c:4- m:1 |          |
+| 25 |       www.lacolline.ro       |          |          | c:1- m:1 |  c:1- m:4 |    c:1    |  c:2- m:2 |           |   c:1    |    c:11   |    c:3    |           |          |          |
+| 26 |         narcheese.ro         |          |          | c:1- m:1 |  c:1- m:1 | c:1- m:39 |    c:1    |    c:2    | c:1- m:2 |    c:9    | c:24- m:2 |    c:6    |          |          |
+| 27 |         it.aiaic.ro          |   c:11   |   c:5    | c:1- m:1 |    c:1    |           |    c:1    |    c:10   |          |    c:3    |    c:4    |           |          |   c:18   |
+| 28 |           sanex.ro           |          |          |   c:1    |    c:1    |           |    c:1    |  c:1- m:3 |          |    c:3    |           |           |          |          |
+| 29 |       clujanacluj.com        |          |   c:13   |   c:1    |    c:1    |           |    c:3    |           | c:1- m:1 |           |    c:39   |           |          |          |
+| 30 |         toniauto.ro          | c:2- m:1 |          |          |           |           |           |  c:1- m:2 |          |    c:3    |    c:19   |    c:2    |          |          |
+| 31 |      www.auto-start.ro       |          |          |   c:4    |    c:1    |           |    c:1    |    c:9    |          |           | c:17- m:2 |    c:2    |   c:4    |   c:14   |
+| 32 |      www.silaghiauto.ro      |          |          |          |           |           |           |           |          |  c:2- m:3 |           |           |          |          |
+| 33 |       jurnaldecluj.ro        |          |   c:1    |   c:1    | c:22- m:3 |    c:1    |    c:2    |    c:3    |   c:1    | c:22- m:2 |    c:2    |           |          |          |
+| 34 |      www.ziardecluj.ro       |          |   c:2    |   c:1    |    c:1    |           |    c:1    |    c:14   |   c:1    |    c:43   |    c:16   |           |          |          |
+| 35 |       gazetadecluj.ro        |          |   c:1    |          |           |           |           |           |   c:1    |           |    c:45   |    c:1    |          |          |
+| 36 |      www.monitorulcj.ro      |   c:10   | c:1- m:1 |   c:2    |    c:12   |           |    c:4    |           |   c:10   | c:10- m:1 |           |           |          |          |
+| 37 |          www.zcj.ro          |          |          |   c:1    |           |           |    c:4    |           |          |           |    c:80   |           |          |          |
+| 38 |     junior-residence.ro      |          |          | c:1- m:2 |    c:1    |           |           |           |   c:1    |  c:4- m:4 |  c:1- m:3 |           |          |          |
+| 39 |           remax.ro           |          |          |          |           |           | c:2- m:19 |           | c:1- m:1 |    c:4    |  c:5- m:1 |           |          |          |
+| 40 |    www.tokyorestaurant.ro    | c:1- m:1 | c:1- m:1 | c:1- m:3 |    c:2    |           |           |           |   c:3    |    c:2    |           |           |   c:4    |          |
+| 41 |     indigorestaurant.ro      |          |          |          |           |           |    c:2    | c:12- m:1 |          |           |    c:15   |  c:8- m:1 |   c:5    |   c:26   |
+| 42 |  www.restaurantshanghai.ro   |          |          |   c:1    |    c:1    |           |    c:3    |    c:5    |          |    c:1    |           |    c:5    |          |          |
+| 43 |     martyrestaurants.ro      |          |          | c:1- m:2 |    c:6    | c:1- m:10 |    c:1    | c:1- m:10 |          |    c:8    |    c:4    |    c:3    |   c:12   |   c:4    |
+| 44 | complexsportivgheorgheni.ro  |          |          |          |    c:2    |           |           |  c:8- m:7 |          |  c:3- m:1 |    c:6    |    c:29   |   c:24   |          |
+| 45 |       www.decathlon.ro       |          |          |          |           |           |  c:1- m:1 |           |   c:1    |    c:1    |           |           |          |          |
+| 46 |       clujbusiness.ro        |   c:2    |          |   c:1    |    c:7    |           |    c:1    |    c:11   |   c:12   |           |           |    c:6    |   c:1    |   c:11   |
+| 47 |          softech.ro          | c:4- m:1 |   c:1    |   c:2    |  c:1- m:2 | c:1- m:19 |  c:1- m:2 | c:4- m:19 |          |    c:20   |  c:1- m:2 |  c:4- m:2 |          |          |
+| 48 |        www.arobs.com         |   c:3    |   c:1    | c:1- m:5 |  c:1- m:1 |           |  c:4- m:1 | c:64- m:9 | c:1- m:6 |    c:9    |    c:28   | c:17- m:1 |   c:1    |          |
+| 49 |        www.brinel.com        | c:3- m:1 |          |          |  c:3- m:2 |           |           | c:3- m:13 |          |           |    c:8    |           |   c:2    |          |
+|    |         total sites          |    15    |    13    |    37    |     37    |     11    |     35    |     25    |    25    |     33    |     28    |     22    |    15    |    7     |
++----+------------------------------+----------+----------+----------+-----------+-----------+-----------+-----------+----------+-----------+-----------+-----------+----------+----------+
 
 +----+------------------------------+------------------------------------------------------------------------+---------------+------------------------------------------------------------------------+
 | no |             Site             |                                 Title                                  | Keyword count |                              Description                               |
@@ -130,27 +139,31 @@
 | 20 |        www.farmec.ro         |                        FARMEC - Brand Românesc                         |       1       |                        FARMEC - Brand Românesc                         |
 | 21 |         jolidon.com          |                  Jolidon - European Fashion Lingerie                   |               | The official website of Jolidon Group. See our brands' latest lingerie |
 | 22 |         napolact.ro          |        Napolact | Lapte, Iaurturi, Branzeturi, Smantana si Unt         |       5       | Napolact - Lapte din inima Ardealului, iaurturi, branzeturi, smantana  |
-| 23 |         it.aiaic.ro          |                                 AIAIC                                  |               |                                                                        |
-| 24 |           sanex.ro           |                   SANEX - Gresie și faianță, România                   |               | SANEX este recunoscut în România ca un mare producător de plăci cerami |
-| 25 |       clujanacluj.com        |               Incaltaminte din piele | Clujana - CLUJANA               |               | Intreaga noastra istorie este dedicata gasirii celui mai confortabil p |
-| 26 |         toniauto.ro          |               Toni Auto - Scoala de Soferi - Cluj Napoca               |       14      | Scoala de soferi Toni Auto - Cluj Napoca - Categoriile A, A1, A2, AM,  |
-| 27 |      www.auto-start.ro       |      Scoala de soferi Auto-Start - Cel mai bun start in conducere      |               | Nu te mai lăsa CONDUS DE ALTII Vino si ia startul in conducere, indrum |
-| 28 |      www.silaghiauto.ro      |                     Scoala de Soferi SILAGHI AUTO                      |               |                                                                        |
-| 29 |       jurnaldecluj.ro        | Jurnal de Cluj - Știri de actualitate - Stiri de actualitate Cluj. Zia |               |         Stiri de actualitate Cluj. Ziar online. Jurnal de Cluj         |
-| 30 |      www.ziardecluj.ro       |                          stiri | Ziar de Cluj                          |               |               Aboneaza-te! E cel mai tare ziar din oras!               |
-| 31 |       gazetadecluj.ro        | Ziar Gazeta de Cluj | Singurul saptamanal de investigatii din judetul  |               | Ziar Gazeta de Cluj | Singurul saptamanal de investigatii din judetul  |
-| 32 |      www.monitorulcj.ro      |         Monitorul Cluj | Ziar de stiri din Cluj | Actualitate          |       22      |                                    Ziar de Ètiri din Cluj, cu informaÈii de ultima orÄ. Ètiri locale                                     |
-| 33 |          www.zcj.ro          | Ziua de Cluj, Ziar de Cluj cu Stiri din Cluj si Stiri de Ultima Ora |  |               | Ziua de Cluj, cea mai buna echipa din presa clujeana, iti aduce cele m |
-| 34 |     junior-residence.ro      |    Junior Residence - apartamente noi în Mărăști, Cluj-Napoca 2020     |       3       | Prinde oferta la noile apartamente finalizate în 2020 cu CF din ansamb |
-| 35 |           remax.ro           |  Anunturi imobiliare - vanzare cumparare, inchiriere | RE/MAX Romania  |               | Anunturi imobiliare - vanzari, cumparari si inchirieri de proprietati  |
-| 36 |    www.tokyorestaurant.ro    |                    Home - Tokyo Japanese Restaurant                    |               | Preparate Japoneze Rafinate, Master Chefi de Renume Mondial si o Atmos |
-| 37 |     indigorestaurant.ro      |    Restaurant Indigo > Cea mai bună mâncare indiană din Cluj Napoca    |               | Restaurant autentic indian Indigo, cu meniu inspirat din lumea culinar |
-| 38 |  www.restaurantshanghai.ro   |   Restaurant Shanghai Cluj - Mâncare chinezească - Shanghai Delivery   |               | Restaurant Shanghai este primul restaurant chinezesc din Cluj-Napoca,  |
-| 39 |     martyrestaurants.ro      |                           Marty Restaurants                            |               |                                                                        |
-| 40 | complexsportivgheorgheni.ro  | Complex Sportiv Gheorgheni – Complex agrement – bază sportivă Gheorghe |               |                                                                        |
-| 41 |       www.decathlon.ro       |   DECATHLON  ►►► Echipamente, îmbrăcăminte și încălțăminte de sport    |               | Decathlon.ro: peste 70 de sporturi sub același acoperiș - online și în |
-| 42 |       clujbusiness.ro        |                              ClujBusiness                              |               |                                                                        |
-| 43 |          softech.ro          | Softech – Software development and outsourcing company from Cluj, Tran |               |                                                                        |
-| 44 |        www.arobs.com         | AROBS Transilvania Software development - IT solutions of top quality  |               | AROBS thrives as a custom software development company since our incep |
-| 45 |        www.brinel.com        |    BRINEL - IT&C system integrator: BRINEL - IT&C system integrator    |       10      | With over 30 years of experience, BRINEL is continuously implementing  |
+| 23 |           bonas.ro           |                                 Bonas                                  |               | Vezi Produsele Noastre BONAS There are many variations of passages of  |
+| 24 |          comlact.ro          |                     Comlact – Autentic de la munte                     |               |                                                                        |
+| 25 |       www.lacolline.ro       |           Lapte de Capra | Branza de Capra | Iaurt de Capra            |       8       | Magazinul online LaColline va ofera o gama variata de produse provenit |
+| 26 |         narcheese.ro         | Atelierul de brânza NarCheese | Când „artizanal” nu e doar o vorbă în  |       8       | Atelierul de brânza NarCheese - Lapte 100% natural, rețete tradițional |
+| 27 |         it.aiaic.ro          |                                 AIAIC                                  |               |                                                                        |
+| 28 |           sanex.ro           |                   SANEX - Gresie și faianță, România                   |               | SANEX este recunoscut în România ca un mare producător de plăci cerami |
+| 29 |       clujanacluj.com        |               Incaltaminte din piele | Clujana - CLUJANA               |               | Intreaga noastra istorie este dedicata gasirii celui mai confortabil p |
+| 30 |         toniauto.ro          |               Toni Auto - Scoala de Soferi - Cluj Napoca               |       14      | Scoala de soferi Toni Auto - Cluj Napoca - Categoriile A, A1, A2, AM,  |
+| 31 |      www.auto-start.ro       |      Scoala de soferi Auto-Start - Cel mai bun start in conducere      |               | Nu te mai lăsa CONDUS DE ALTII Vino si ia startul in conducere, indrum |
+| 32 |      www.silaghiauto.ro      |                     Scoala de Soferi SILAGHI AUTO                      |               |                                                                        |
+| 33 |       jurnaldecluj.ro        | Jurnal de Cluj - Știri de actualitate - Stiri de actualitate Cluj. Zia |               |         Stiri de actualitate Cluj. Ziar online. Jurnal de Cluj         |
+| 34 |      www.ziardecluj.ro       |                          stiri | Ziar de Cluj                          |               |               Aboneaza-te! E cel mai tare ziar din oras!               |
+| 35 |       gazetadecluj.ro        | Ziar Gazeta de Cluj | Singurul saptamanal de investigatii din judetul  |               | Ziar Gazeta de Cluj | Singurul saptamanal de investigatii din judetul  |
+| 36 |      www.monitorulcj.ro      |         Monitorul Cluj | Ziar de stiri din Cluj | Actualitate          |       22      |                                    Ziar de Ètiri din Cluj, cu informaÈii de ultima orÄ. Ètiri locale                                     |
+| 37 |          www.zcj.ro          | Ziua de Cluj, Ziar de Cluj cu Stiri din Cluj si Stiri de Ultima Ora |  |               | Ziua de Cluj, cea mai buna echipa din presa clujeana, iti aduce cele m |
+| 38 |     junior-residence.ro      |    Junior Residence - apartamente noi în Mărăști, Cluj-Napoca 2020     |       3       | Prinde oferta la noile apartamente finalizate în 2020 cu CF din ansamb |
+| 39 |           remax.ro           |  Anunturi imobiliare - vanzare cumparare, inchiriere | RE/MAX Romania  |               | Anunturi imobiliare - vanzari, cumparari si inchirieri de proprietati  |
+| 40 |    www.tokyorestaurant.ro    |                    Home - Tokyo Japanese Restaurant                    |               | Preparate Japoneze Rafinate, Master Chefi de Renume Mondial si o Atmos |
+| 41 |     indigorestaurant.ro      |    Restaurant Indigo > Cea mai bună mâncare indiană din Cluj Napoca    |               | Restaurant autentic indian Indigo, cu meniu inspirat din lumea culinar |
+| 42 |  www.restaurantshanghai.ro   |   Restaurant Shanghai Cluj - Mâncare chinezească - Shanghai Delivery   |               | Restaurant Shanghai este primul restaurant chinezesc din Cluj-Napoca,  |
+| 43 |     martyrestaurants.ro      |                           Marty Restaurants                            |               |                                                                        |
+| 44 | complexsportivgheorgheni.ro  | Complex Sportiv Gheorgheni – Complex agrement – bază sportivă Gheorghe |               |                                                                        |
+| 45 |       www.decathlon.ro       |   DECATHLON  ►►► Echipamente, îmbrăcăminte și încălțăminte de sport    |               | Decathlon.ro: peste 70 de sporturi sub același acoperiș - online și în |
+| 46 |       clujbusiness.ro        |                              ClujBusiness                              |               |                                                                        |
+| 47 |          softech.ro          | Softech – Software development and outsourcing company from Cluj, Tran |               |                                                                        |
+| 48 |        www.arobs.com         | AROBS Transilvania Software development - IT solutions of top quality  |               | AROBS thrives as a custom software development company since our incep |
+| 49 |        www.brinel.com        |    BRINEL - IT&C system integrator: BRINEL - IT&C system integrator    |       10      | With over 30 years of experience, BRINEL is continuously implementing  |
 +----+------------------------------+------------------------------------------------------------------------+---------------+------------------------------------------------------------------------+
